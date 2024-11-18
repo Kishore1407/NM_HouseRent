@@ -20,8 +20,10 @@ import UpdateProperty from "./property/UpdateProperty";
 import YourBookings from "./property/YourBookings";
 import AllBookings from "./admin/AllBookings";
 // import "bootstrap/dist/css/bootstrap.min.css";
-
-// import 'bootstrap/dist/css/bootstrap.min.css';
+// //
+// // import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const App = () => {
   return (

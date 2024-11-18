@@ -54,52 +54,52 @@ const Login = () => {
     }
   };
   return (
-    <section className=" flex  items-center justify-center min-h-screen ">
-      <div className="border flex flex-col gap-5  sm:p-10  p-5 rounded-lg shadow-lg">
-        <h1>Login</h1>
-        <div className="flex gap-4 flex-col">
-          <div className="flex items-center gap-10">
-            <label>Email</label>
+    <section className="d-flex align-items-center justify-content-center min-vh-100">
+      <div className="border rounded shadow-lg p-4 p-sm-5 bg-white">
+        <h1 className="text-center mb-4">Login</h1>
+        <form className="d-flex flex-column gap-3">
+          <div className="mb-3">
+            <label className="form-label">Email</label>
             <input
               type="email"
+              className="form-control"
               placeholder="email"
               value={email}
-              className="border p-2 outline-none rounded-lg"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="flex items-center gap-3">
-            <label>Password</label>
+
+          <div className="mb-3">
+            <label className="form-label">Password</label>
             <input
-              className="border rounded-lg p-2 outline-none"
               type="password"
+              className="form-control"
               placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          <div className="flex items-center justify-center">
+          <div className="text-center">
             <button
               onClick={(e) => login(e)}
-              className="border p-2 rounded-md"
+              className="btn btn-primary"
               type="submit"
             >
               Submit
             </button>
           </div>
-          <div className="border"></div>
-          <div className="flex items-center gap-2">
-            <p className="text-xs">Don't have an account?</p>
-            <Link to="/signup " className="hover:underline text-sm">
+
+          <div className="border-top my-3"></div>
+
+          <div className="d-flex justify-content-center align-items-center">
+            <p className="mb-0 small me-2">Don't have an account?</p>
+            <Link to="/signup" className="text-primary text-decoration-none">
               Register Now
             </Link>
           </div>
-          {/* <div className="flex items-center  mx-auto">
-            <button className="border flex items-center gap-2 p-2 text-sm rounded-lg">
-              <FaGoogle /> Login with Google
-            </button>
-          </div> */}
+        </form>
+        <div className="text-center mt-3">
           <GAuth />
         </div>
       </div>

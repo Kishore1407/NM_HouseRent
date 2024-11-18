@@ -78,39 +78,38 @@ const CreateProperty = () => {
     setImages(delteImages);
   };
   return (
-    <section className="p-3 pb-16 sm:py-20 py-10">
+    <section className="container py-5">
       <form
-        className="border h-auto flex flex-col gap-7 rounded-xl shadow-lg p-3"
+        className="card p-4 shadow rounded"
         onSubmit={(e) => createProperty(e)}
       >
-        <div className="flex">
+        <div className="d-flex  items-center gap-3 mb-3">
           <button
             onClick={back}
-            className=" bg-white hover:border-slate-400 hover:cursor-pointer  drop-shadow-sm gap-1 border text-orange-400 flex items-center p-1 px-2 rounded-lg  "
+            className="flex items-center "
+            type="button"
           >
-            <ChevronLeft />
-            Back
+            <ChevronLeft /> Back
           </button>
-          <h1 className="text-center flex items-center  mx-auto">
-            Create Property
-          </h1>
+          <h1 className="text-center flex mx-auto text-lg"  >Create Property</h1>
         </div>
-        {/* {user && user._id} */}
-        <div className="flex items-center gap-2">
-          <h1>Title</h1>
+
+        <div className="mb-3">
+          <label className="form-label">Title</label>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border p-2 rounded-lg border-slate-300 outline-none"
+            className="form-control"
             type="text"
           />
         </div>
-        <div className="flex items-center gap-2">
-          <h1>Property Type</h1>
+
+        <div className="mb-3">
+          <label className="form-label">Property Type</label>
           <select
             value={propertyType}
             onChange={(e) => setPropertyType(e.target.value)}
-            className="border p-2 rounded-lg border-slate-300 outline-none"
+            className="form-select"
           >
             <option value="">Select a Property Type</option>
             <option value="Apartment">Apartment</option>
@@ -120,106 +119,148 @@ const CreateProperty = () => {
             <option value="Other">Other</option>
           </select>
         </div>
-        <div className="flex items-center gap-2">
-          <h1>Description</h1>
+
+        <div className="mb-3">
+          <label className="form-label">Description</label>
           <input
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border p-2  rounded-lg border-slate-300 outline-none"
+            className="form-control"
             type="text"
           />
         </div>
-        <div className="flex items-center gap-2">
-          <h1>Address</h1>
+
+        <div className="mb-3">
+          <label className="form-label">Address</label>
           <input
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            className="border rounded-lg border-slate-300 p-2 outline-none"
+            className="form-control"
             type="text"
           />
         </div>
 
-        <div className="flex items-center gap-2">
-          <h1>Price</h1>
+        <div className="mb-3">
+          <label className="form-label">Price</label>
           <input
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
-            className="border p-2 rounded-lg border-slate-300 outline-none"
-            type="tel"
+            className="form-control"
+            type="number"
           />
         </div>
-        <div className="flex  items-center gap-2">
-          <h1>Area</h1>
+
+        <div className="mb-3">
+          <label className="form-label">Area</label>
           <input
             value={area}
             onChange={(e) => setArea(e.target.value)}
-            className="border p-2 rounded-lg border-slate-300 outline-none "
+            className="form-control"
             type="text"
           />
         </div>
-        <div className="flex items-center gap-2">
-          <h1>BedRoom</h1>
+
+        <div className="mb-3">
+          <label className="form-label">Bedrooms</label>
           <input
             value={bedRoom}
             onChange={(e) => setBedRoom(Number(e.target.value))}
-            className="border p-2 rounded-lg border-slate-300 outline-none "
-            type="tel"
+            className="form-control"
+            type="number"
           />
         </div>
-        <div className="flex items-center  gap-2">
-          <h1>BathRoom</h1>
+
+        <div className="mb-3">
+          <label className="form-label">Bathrooms</label>
           <input
             value={bathRoom}
             onChange={(e) => setBathRoom(Number(e.target.value))}
-            className="border p-2 outline-none rounded-lg border-slate-300"
-            type="tel"
+            className="form-control"
+            type="number"
           />
         </div>
-        <div className="flex flex-col sm:flex-row gap-5 justify-between border w-1/2 rounded-lg p-3 ">
-          <div className="flex items-center gap-2">
-            <input
-              checked={furnished}
-              onChange={(e) => setFurnished(e.target.checked)}
-              className="border p-2 rounded-lg border-slate-300 outline-none"
-              type="checkbox"
-            />
-            <h1>Furished</h1>
+
+        <div className="row mb-3">
+          <div className="col">
+            <div className="form-check">
+              <input
+                checked={furnished}
+                onChange={(e) => setFurnished(e.target.checked)}
+                className="form-check-input"
+                type="checkbox"
+                id="furnished"
+              />
+              <label className="form-check-label" htmlFor="furnished">
+                Furnished
+              </label>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <input
-              checked={parking}
-              onChange={(e) => setParking(e.target.checked)}
-              className="border p-2 rounded-lg border-slate-300  outline-none"
-              type="checkbox"
-            />
-            <h1>Parking</h1>
+          <div className="col">
+            <div className="form-check">
+              <input
+                checked={parking}
+                onChange={(e) => setParking(e.target.checked)}
+                className="form-check-input"
+                type="checkbox"
+                id="parking"
+              />
+              <label className="form-check-label" htmlFor="parking">
+                Parking
+              </label>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={isAvailable}
-              onChange={(e) => setIsAvailable(e.target.checked)}
-              className="border p-2  rounded-lg border-slate-300 outline-none "
-            />
-            <h1>Available</h1>
+          <div className="col">
+            <div className="form-check">
+              <input
+                checked={isAvailable}
+                onChange={(e) => setIsAvailable(e.target.checked)}
+                className="form-check-input"
+                type="checkbox"
+                id="available"
+              />
+              <label className="form-check-label" htmlFor="available">
+                Available
+              </label>
+            </div>
           </div>
         </div>
 
-        <div>
-          <h1>Images</h1>
-          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-          <button onClick={(e) => imageUpload(e)} type="button">
+        <div className="mb-3">
+          <label className="form-label">Images</label>
+          <input
+            type="file"
+            className="form-control"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+          <button
+            onClick={(e) => imageUpload(e)}
+            type="button"
+            className="btn btn-primary mt-2"
+          >
             Upload
           </button>
         </div>
+
         {images &&
           images.map((data, index) => (
-            <div className="w-16 h-16 flex items-center " key={index}>
-              <img src={data} alt="imgage" className="object-cover" />
-              <button onClick={(e) => deleteImage(data)}>Delete</button>
+            <div className="d-flex align-items-center mb-2" key={index}>
+              <img
+                src={data}
+                alt="image"
+                className="img-thumbnail me-2"
+                style={{ width: "75px", height: "75px" }}
+              />
+              <button
+                onClick={(e) => deleteImage(data)}
+                type="button"
+                className="btn btn-danger btn-sm"
+              >
+                Delete
+              </button>
             </div>
           ))}
-        <button className="border items-center p-2 rounded-lg" type="submit">
+
+        <button type="submit" className="btn btn-success w-100">
           Create
         </button>
       </form>

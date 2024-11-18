@@ -36,44 +36,38 @@ const Properties = () => {
 
   return (
     <div>
-      <div className="px-5 border-b  fixed top-0 items-center gap-3 flex sm:hidden bg-white z-10 py-3 w-full">
+      
+      <div className="d-flex px-3 py-2 border-bottom position-fixed top-0 w-100 bg-white align-items-center gap-2 z-10">
         <button
           type="button"
           onClick={back}
-          className="bg-white hover:border-slate-400 cursor-pointer  drop-shadow-sm gap-1 border text-orange-400 flex items-center p-1 px-2 rounded-lg"
+          className=" d-flex border align-items-center gap-1"
         >
-          <ChevronLeft />
-          Back
+          <ChevronLeft /> Back
         </button>
-        <h1 className="font-medium text-slate-500 text-lg">Your Properties</h1>
+        <h1 className="mb-0 text-secondary fs-5">Your Properties</h1>
       </div>
 
-      <section className="py-16 sm:py-24 flex flex-wrap gap-4">
-       
-
+      <section className="pt-5 mt-5 d-flex flex-wrap gap-3">
         {property.length > 0 ? (
           <>
             {property.map((data, index) => (
-              <div key={index} className="w-full sm:w-1/2 lg:w-1/3 mb-4 px-5">
+              <div key={index} className="col-12 col-sm-6 col-lg-4 mb-3 px-3">
                 <Link
-                  className="flex flex-col shadow-lg rounded-2xl border p-2"
                   to={`/updateProperty/${data._id}`}
+                  className="card shadow border-0 h-100 text-decoration-none text-dark"
                 >
-                  <div className="w-full mb-2">
-                    <img
-                      src={data.images[0]}
-                      className="object-cover rounded-lg"
-                      alt="property"
-                    />
-                  </div>
-                  <div className="flex flex-col text-neutral-500 gap-1 py-1 px-2">
-                    <h1 className="flex items-center gap-2">
-                      <BsHouse className="text-orange-400" />
-                      {data.title}
-                    </h1>
-                    <p className="flex items-center">
-                      <IndianRupee className="text-orange-500" size={15} />
-                      {data.price}
+                  <img
+                    src={data.images[0]}
+                    className="card-img-top rounded"
+                    alt="property"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title d-flex align-items-center gap-2 text-primary">
+                      <BsHouse className="text-warning" /> {data.title}
+                    </h5>
+                    <p className="card-text d-flex align-items-center gap-1 text-success">
+                      <IndianRupee size={15} /> {data.price}
                     </p>
                   </div>
                 </Link>
@@ -81,7 +75,10 @@ const Properties = () => {
             ))}
           </>
         ) : (
-          <p className=" flex items-center mx-auto font-bold justify-center min-h-screen text-red-400">
+          <p
+            className="d-flex justify-content-center align-items-center w-100 text-danger fw-bold"
+            style={{ minHeight: "50vh" }}
+          >
             No Property found
           </p>
         )}

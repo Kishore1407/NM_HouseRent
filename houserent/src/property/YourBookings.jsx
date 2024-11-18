@@ -25,40 +25,37 @@ const YourBookings = () => {
     navigate(-1);
   };
   return (
-    <div className="py-20 px-10">
+    <div className="my-10 px-4">
+
       <button
         type="button"
         onClick={back}
-        className=" bg-white mb-2 hover:border-slate-400 hover:cursor-pointer mr-auto drop-shadow-sm gap-1 border text-orange-400 flex items-center p-1 px-2 rounded-lg  "
+        className="btn mt-12  mb-3 d-flex align-items-center gap-2"
       >
-        <ChevronLeft />
-        Back
+        <ChevronLeft /> Back
       </button>
-      {/* {user._id} */}
-      {/* <div>
-        {bookings &&
-          bookings.map((data, index) => <div key={index}>{data.user}</div>)}
-      </div> */}
-      <div className="border  p-3 rounded-lg">
+
+      
+      <div className="card p-3 rounded">
         {bookings && bookings.length > 0 ? (
-          <div className="">
+          <div>
             {bookings.map((data, index) => (
-              <div className="border-b py-2">
+              <div key={index} className="border-bottom py-3">
                 <Link
                   to={`/property/${data.property}`}
-                  className="border-b py-2"
+                  className="text-decoration-none text-dark"
                 >
-                  <div>
-                    <label>CheckInDate</label>
+                  <div className="mb-2">
+                    <label className="fw-bold">Check-In Date:</label>{" "}
                     {data.checkInDate && data.checkInDate}
                   </div>
-                  <div>
-                    <label>CheckInDate</label>
-                    {data.checkInDate && data.checkInDate}
+                  <div className="mb-2">
+                    <label className="fw-bold">Check-Out Date:</label>{" "}
+                    {data.checkOutDate && data.checkOutDate}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <label className="font-medium">Status - </label>
-                    <p className="text-neutral-400">
+                  <div className="d-flex align-items-center gap-2">
+                    <label className="fw-bold">Status:</label>
+                    <p className="text-muted mb-0">
                       {data.status && data.status}
                     </p>
                   </div>
@@ -67,7 +64,10 @@ const YourBookings = () => {
             ))}
           </div>
         ) : (
-          <p className=" flex items-center mx-auto font-bold justify-center min-h-screen text-red-400">
+          <p
+            className="d-flex justify-content-center align-items-center text-danger fw-bold"
+            style={{ minHeight: "50vh" }}
+          >
             No Bookings Found
           </p>
         )}

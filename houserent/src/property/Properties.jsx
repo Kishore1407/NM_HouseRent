@@ -24,65 +24,53 @@ const Properties = () => {
   };
   return (
     <div>
-      {/* Properties */}
-      {/* <div className="relative  w-full h-screen ">
-        <img
-          className="w-full h-full object-cover  py-2 rounded-lg p-1"
-          src={HomePage}
-          alt="homepage"
-        />
-      </div> */}
-      <div className="sm:p-10 sm:py-16 px-5">
-        <div className="  hidden relative sm:flex  w-full  h-[500px] overflow-hidden  relative">
+      <div className="container py-4">
+        <div className="d-none d-sm-block position-relative rounded overflow-hidden">
           <img
-            className=" hover:scale-100 w-full rounded-3xl shadow-lg h-full  object-cover"
+            className="img-fluid w-100 rounded shadow-lg"
             src={Home}
+            alt="Home"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-black w-24 opacity-80 via-transparent to-transparent rounded-md" />
-          <div className="absolute inset-0 bg-gradient-to-tl from-black  opacity-30 via-transparent to-transparent rounded-md" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-black  opacity-30 via-transparent to-transparent rounded-md" />
-          <div className="absolute inset-0 bg-gradient-to-bl from-black  opacity-30 via-transparent to-transparent rounded-md" />
+          <div className="position-absolute top-0 start-0 w-100 h-100 bg-gradient bg-opacity-80"></div>
         </div>
-        {/* <div className="sm:flex hidden absolute  p-2 inset-0 items-center justify-center">
-          <input type="text" className=" rounded-lg outline-none p-3" />
-          <label>Search</label>
-        </div> */}
       </div>
-      <div className="px-5">
-        <h1 className="font-medium hidden sm:flex  text-lg ">
-          Explore Properties
-        </h1>
+
+      <div className="container mt-4">
+        <h1 className="d-none d-sm-block fw-medium fs-5">Explore Properties</h1>
       </div>
-      <section className="py-10 flex flex-wrap gap-4">
-        {property.length > 0 &&
-          property.map((data, index) => (
-            <div key={index} className="w-full hover:scale-105 transition-all duration-500 ease-in-out sm:w-1/2 lg:w-1/3 mb-4  px-5  ">
-              <Link
-                className="flex flex-col shadow-lg rounded-2xl  border p-2 "
-                to={`/property/${data._id}`}
-              >
-                {/* {data._id} */}
-                <div className="w-full mb-2">
-                  <img
-                    src={data.images[0]}
-                    className="object-cover rounded-lg"
-                    alt="images"
-                  />
-                </div>
-                <div className="flex flex-col text-neutral-500 gap-1 py-1 px-2">
-                  <h1 className=" flex  items-center gap-2">
-                    <BsHouse className="text-orange-400" />
-                    {data.title}
-                  </h1>
-                  <p className="flex items-center">
-                    <IndianRupee className="text-orange-500" size={15} />
-                    {data.price}
-                  </p>
-                </div>
-              </Link>
-            </div>
-          ))}
-      </section>
+
+      <div className="container py-4">
+        <div className="row gy-4">
+          {property.length > 0 &&
+            property.map((data, index) => (
+              <div key={index} className="col-12 col-sm-6 col-lg-4">
+                <Link
+                  className="text-decoration-none text-dark d-flex flex-column shadow-lg rounded border p-2"
+                  to={`/property/${data._id}`}
+                >
+                  <div className="mb-2">
+                    <img
+                      src={data.images[0]}
+                      className="img-fluid rounded"
+                      alt="Property"
+                    />
+                  </div>
+
+                  <div className="d-flex flex-column text-muted gap-1 py-1 px-2">
+                    <h1 className="d-flex align-items-center gap-2">
+                      <BsHouse className="text-warning" />
+                      {data.title}
+                    </h1>
+                    <p className="d-flex align-items-center">
+                      <IndianRupee className="text-warning" size={15} />
+                      {data.price}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            ))}
+        </div>
+      </div>
     </div>
   );
 };

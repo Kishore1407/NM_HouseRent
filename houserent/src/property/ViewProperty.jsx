@@ -163,7 +163,10 @@ const ViewProperty = () => {
               <TbPaintOff /> Not Furnished
             </p>
           )}
-          <a href={`mailto:${email}`} className="flex items-center gap-2">
+          <a
+            href={`mailto:${email}`}
+            className="flex outline-none  text-decoration-none items-center gap-2"
+          >
             <Mail /> Contact
           </a>
           {user && user._id ? (

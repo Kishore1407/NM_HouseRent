@@ -35,134 +35,130 @@ const Search = () => {
   };
 
   return (
-    <div className="p-10">
-      <div className="border p-5 rounded-lg">
-        <div className="p-3">
-          {/* Search Input */}
-          <input
-            type="search"
-            value={searchTerm}
-            className="p-2 border outline-none rounded-lg"
-            placeholder="Search for properties"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button
-            onClick={search}
-            className="ml-2 p-2 bg-blue-500 text-white rounded-lg"
-          >
-            Search
-          </button>
-
-          <h1 className="mt-5 font-semibold">Filter</h1>
-
-          {/* Parking Filter */}
-          <div>
-            <label>Parking</label>
+    <div className="container py-20">
+      <div className="card p-4">
+        <div className="mb-3">
+      
+          <div className="input-group">
             <input
-              type="checkbox"
-              checked={parking}
-              onChange={(e) => setParking(e.target.checked)}
-              className="ml-2"
+              type="search"
+              value={searchTerm}
+              className="form-control"
+              placeholder="Search for properties"
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-          </div>
-
-          {/* Furnished Filter */}
-          <div className="mt-2">
-            <label>Furnished</label>
-            <input
-              type="checkbox"
-              checked={furnished}
-              onChange={(e) => setFurnished(e.target.checked)}
-              className="ml-2"
-            />
+            <button onClick={search} className="btn btn-primary">
+              Search
+            </button>
           </div>
         </div>
 
+        <h5 className="mt-4">Filter</h5>
+
+      
+        <div className="form-check item-center flex mt-2">
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="parkingFilter"
+            checked={parking}
+            onChange={(e) => setParking(e.target.checked)}
+          />
+          <label className="form-check-label" htmlFor="parkingFilter">
+            Parking
+          </label>
+        </div>
+
+        {/* Furnished Filter */}
+        <div className="form-check mt-2">
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="furnishedFilter"
+            checked={furnished}
+            onChange={(e) => setFurnished(e.target.checked)}
+          />
+          <label className="form-check-label" htmlFor="furnishedFilter">
+            Furnished
+          </label>
+        </div>
+
         {/* Displaying results */}
-        <div className="py-10 border rounded-lg p-2">
-          <h1 className="font-medium text-center py-2 text-lg">Properties</h1>
+        <div className="mt-5">
+          <h5 className="text-center">Properties</h5>
           {results.length > 0 ? (
-            <ul>
+            <ul className="list-group">
               {results.map((property, index) => (
-                <li key={index} className="border-b py-2">
-                  <h3 className="font-bold">{property.name}</h3>
-                  <div className="">
+                <li
+                  key={index}
+                  className="list-group-item mb-3 border rounded shadow-sm"
+                >
+                  <h6 className="mb-3">{property.title}</h6>
+                  <div className="mb-3">
                     <img
-                      className="h-[250px] w-[300px] sm:h-[400px] sm:w-[450px] rounded-lg object-cover"
+                      className="img-fluid rounded"
+                      style={{ maxHeight: "300px", maxWidth: "100%" }}
                       src={property.images[0]}
+                      alt={property.title}
                     />
                   </div>
-                  <div className="flex flex-col gap-3 px-5 py-3">
-                    <div className="flex justify-between">
-                      <h1 className="flex items-center gap-2 flex-wrap">
-                        <House />
-                        {property.title && property.title}
-                      </h1>
-                      <p className="flex border rounded-lg p-2 shadow-md border-slate-400 items-center gap-1">
-                        <IndianRupee size={16} />
-                        {property.price && property.price}
-                      </p>
+                  <div className="d-flex justify-content-between mb-3">
+                    <div>
+                      <House className="me-2" />
+                      {property.title}
                     </div>
-
-                    <p className="text-xs text-neutral-700 flex flex-wrap">
-                      {property.description}
-                    </p>
-                    <h1 className="flex items-center gap-2">
-                      <LandPlot />
-                      {property.area}
-                    </h1>
-                    <p className="text-xs flex items-center flex-wrap gap-2">
-                      <MapPin />
-                      {property.address}
-                    </p>
-
-                    {property.parking ? (
-                      <>
-                        {" "}
-                        <p className="flex items-center gap-3">
-                          <ParkingCircle />
-                          Parking
-                        </p>
-                      </>
-                    ) : (
-                      <p className="flex items-center gap-3">
-                        <ParkingCircleOff /> No Parking
-                      </p>
-                    )}
-                    {/* <p className="flex items-center mr-auto gap-3">
-                      <input
-                        className=""
-                        type="checkbox"
-                        checked={isAvailable}
-                      />
-                      Available
-                    </p> */}
-
-                    {property.furnished ? (
-                      <p className="flex items-center gap-3">
-                        <GiPaintRoller />
-                        Furnished
-                      </p>
-                    ) : (
-                      <p className="flex items-center gap-3">
-                        <TbPaintOff /> Not Furnished
-                      </p>
-                    )}
-                    <a
-                      href={`mailto:${results.email}`}
-                      className="flex items-center gap-2"
-                    >
-                      <Mail /> Contact
-                    </a>
+                    <div className="badge bg-primary text-white">
+                      <IndianRupee className="me-1" size={16} />
+                      {property.price}
+                    </div>
                   </div>
-                  {/* <p>{property.state}</p>
-                  <p>{property.parking ? "Has Parking" : "No Parking"}</p>
-                  <p>{property.furnished ? "Furnished" : "Not Furnished"}</p> */}
+                  <p className="small text-muted">{property.description}</p>
+                  <div className="mb-2">
+                    <LandPlot className="me-2" />
+                    {property.area}
+                  </div>
+                  <div className="mb-2">
+                    <MapPin className="me-2" />
+                    {property.address}
+                  </div>
+                  <div className="mb-2">
+                    {property.parking ? (
+                      <div>
+                        <ParkingCircle className="me-2" />
+                        Parking
+                      </div>
+                    ) : (
+                      <div>
+                        <ParkingCircleOff className="me-2" />
+                        No Parking
+                      </div>
+                    )}
+                  </div>
+                  <div className="mb-2">
+                    {property.furnished ? (
+                      <div>
+                        <GiPaintRoller className="me-2" />
+                        Furnished
+                      </div>
+                    ) : (
+                      <div>
+                        <TbPaintOff className="me-2" />
+                        Not Furnished
+                      </div>
+                    )}
+                  </div>
+                  <a
+                    href={`mailto:${property.email}`}
+                    className="btn btn-outline-primary btn-sm"
+                  >
+                    <Mail className="me-1" />
+                    Contact
+                  </a>
                 </li>
               ))}
             </ul>
           ) : (
-            <p>No properties found</p>
+            <p className="text-center">No properties found</p>
           )}
         </div>
       </div>

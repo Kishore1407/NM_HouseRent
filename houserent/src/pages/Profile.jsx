@@ -80,102 +80,95 @@ const Profile = () => {
     navigate(-1);
   };
   return (
-    <section className="p-5 py-10 sm:py-20">
-      <form
-        className="border sm:text-lg flex flex-col gap-3 sm:gap-5 md:gap-7 rounded-lg shadow-md p-5"
-        onSubmit={(e) => updateUser(e)}
-      >
-        {/* {email}email Profile{user && user.email} */}
+    <section className="container py-5">
+      <form className="card p-4 shadow rounded" onSubmit={(e) => updateUser(e)}>
         <button
           type="button"
           onClick={back}
-          className=" bg-white hover:border-slate-400 hover:cursor-pointer mr-auto drop-shadow-sm gap-1 border text-orange-400 flex items-center p-1 px-2 rounded-lg  "
+          className="border rounded-lg p-2 flex items-center  mb-3"
         >
-          <ChevronLeft />
-          Back
+          <ChevronLeft /> Back
         </button>
-        <h1 className="font-medium text-lg p-5 text-center ">Profile</h1>
-        <div className="flex gap-2 items-center ">
-          <label>Email</label>
-          <input
-            type="email"
-            disabled={true}
-            className="border rounded-lg p-2"
-            value={email}
-          />
+
+        <h1 className="text-center mb-4">Profile</h1>
+
+        <div className="mb-3">
+          <label className="form-label">Email</label>
+          <input type="email" disabled className="form-control" value={email} />
         </div>
-        <div className="flex gap-2 items-center ">
-          <label>UserName</label>
+
+        <div className="mb-3">
+          <label className="form-label">UserName</label>
           <input
             type="text"
             value={userName}
-            className="border outline-none rounded-lg p-2"
+            className="form-control"
             onChange={(e) => setUserName(e.target.value)}
           />
         </div>
-        <div className="flex gap-2 items-center ">
-          <label>Address</label>
+
+        <div className="mb-3">
+          <label className="form-label">Address</label>
           <input
             type="text"
             value={address}
-            className="border outline-none rounded-lg p-2"
+            className="form-control"
             onChange={(e) => setAddress(e.target.value)}
           />
         </div>
-        <div className="flex gap-2 items-center ">
-          <label>Pincode</label>
+
+        <div className="mb-3">
+          <label className="form-label">Pincode</label>
           <input
             type="tel"
             value={pinCode}
-            className="border outline-none rounded-lg p-2"
+            className="form-control"
             onChange={(e) => setPinCode(e.target.value)}
           />
         </div>
-        <div className="flex gap-2 items-center ">
-          <label>MobileNo</label>
+
+        <div className="mb-3">
+          <label className="form-label">MobileNo</label>
           <input
             type="tel"
             value={mobileNo}
-            className="border outline-none rounded-lg p-2"
+            className="form-control"
             onChange={(e) => setMobileNo(e.target.value)}
           />
         </div>
-        <div className="flex flex-col md:flex-row gap-5">
-          <div className="flex gap-2 items-center ">
-            <label>State</label>
+
+        <div className="row">
+          <div className="col-md-6 mb-3">
+            <label className="form-label">State</label>
             <input
               type="text"
               value={state}
-              className="border outline-none rounded-lg p-2"
+              className="form-control"
               onChange={(e) => setState(e.target.value)}
             />
           </div>
-          <div className="flex gap-2 items-center ">
-            <label>Country</label>
+          <div className="col-md-6 mb-3">
+            <label className="form-label">Country</label>
             <input
               type="text"
               value={country}
-              className="border outline-none rounded-lg p-2"
+              className="form-control"
               onChange={(e) => setCountry(e.target.value)}
             />
           </div>
         </div>
 
-        <div>
-          <button type="submit" className="rounded-lg shadow-md p-2 border">
+        <div className="mb-3">
+          <button type="submit" className="btn btn-primary w-100">
             Update
           </button>
         </div>
-        <div className="py-3 flex items-center gap-3 sm:hidden">
-          <button
-            onClick={() => signOut()}
-            className="rounded-lg shadow-md p-2 border"
-          >
+
+        <div className="d-flex gap-2 justify-content-between d-md-none">
+          <button onClick={() => signOut()} className="btn btn-secondary w-50">
             Logout
           </button>
-          <button className="rounded-lg shadow-md p-2 border">
-            Delete Account
-          </button>
+          <button className="btn btn-danger w-50">Delete Account</button>
         </div>
       </form>
     </section>
